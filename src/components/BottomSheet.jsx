@@ -1,4 +1,5 @@
-import { X, MapPin, Navigation } from 'lucide-react';
+// src/components/BottomSheet.jsx
+import { X, Navigation } from 'lucide-react';
 
 export default function BottomSheet({ feature, onClose }) {
   const isVisible = feature !== null;
@@ -36,8 +37,14 @@ export default function BottomSheet({ feature, onClose }) {
               />
             </div>
 
-            {/* Kategori Label */}
-            <div className="mb-2">
+            {/* MODIFIKASI: Menambahkan penomoran di sebelah lencana kategori */}
+            <div className="mb-3 flex items-center gap-2">
+              {/* Lencana Angka (ID) */}
+              <span className="flex items-center justify-center w-6 h-6 bg-gray-800 text-white text-xs font-bold rounded-full">
+                {feature.id.toString().padStart(2, '0')}
+              </span>
+              
+              {/* Lencana Kategori */}
               <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full">
                 {feature.kategori}
               </span>

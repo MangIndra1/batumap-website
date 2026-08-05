@@ -4,6 +4,16 @@ import { X, Navigation } from 'lucide-react';
 export default function BottomSheet({ feature, onClose }) {
   const isVisible = feature !== null;
 
+  // FUNGSI LOGIKA WARNA (Anda menghilangkan bagian ini sebelumnya)
+  const getBadgeColor = (kategori) => {
+    switch (kategori) {
+      case 'KULINER': return 'bg-red-800';
+      case 'UMKM LOKAL': return 'bg-slate-800';
+      case 'AGROWISATA': return 'bg-sky-400';
+      default: return 'bg-gray-500';
+    }
+  };
+
   return (
     <>
       <div 
@@ -37,15 +47,14 @@ export default function BottomSheet({ feature, onClose }) {
               />
             </div>
 
-            {/* MODIFIKASI: Menambahkan penomoran di sebelah lencana kategori */}
             <div className="mb-3 flex items-center gap-2">
-              {/* Lencana Angka (ID) */}
-              <span className="flex items-center justify-center w-6 h-6 bg-gray-800 text-white text-xs font-bold rounded-full">
+              {/* Lencana Angka dengan Pemanggilan Fungsi */}
+              <span className={`flex items-center justify-center w-6 h-6 text-white text-xs font-bold rounded-full shadow-sm ${getBadgeColor(feature.kategori)}`}>
                 {feature.id.toString().padStart(2, '0')}
               </span>
               
-              {/* Lencana Kategori */}
-              <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-full">
+              {/* Lencana Teks Kategori */}
+              <span className="inline-block px-3 py-1 bg-gray-50 border border-gray-200 text-gray-600 text-xs font-bold rounded-full">
                 {feature.kategori}
               </span>
             </div>
